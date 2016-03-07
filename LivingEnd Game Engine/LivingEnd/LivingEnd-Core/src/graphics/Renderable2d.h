@@ -1,7 +1,8 @@
 #pragma once
-#include "VertexBuffer.h"
-#include "IndexBuffer.h"
-#include "VertexArray.h"
+#include "Buffers\VertexBuffer.h"
+#include "Buffers\IndexBuffer.h"
+#include "Buffers\VertexArray.h"
+#include "Buffers\OpenGLBuffer.h"
 #include "glm\glm\glm.hpp"
 #include "glm\glm\ext.hpp"
 #include "shader.h"
@@ -28,8 +29,12 @@ namespace LivingEnd { namespace Graphics {
 					color.r, color.g, color.b, color.a,
 					color.r, color.g, color.b, color.a
 				};
-				m_VertexArray->addBuffer(new VertexBuffer(verticies, 4 * 3, 3), 0);
-				m_VertexArray->addBuffer(new VertexBuffer(colors, 4 * 4, 4), 1);
+				API::Buffer vertBuffer(GL_ARRAY_BUFFER, GL_STATIC_DRAW);
+				vertBuffer.SetData(4 * 3, (void*)verticies);
+				API::Buffer colorBuffer(GL_ARRAY_BUFFER, GL_STATIC_DRAW);
+				colorBuffer.SetData(4 * 4, (void*)colors);
+				m_VertexArray->PushBuffer(&vertBuffer);
+				m_VertexArray->PushBuffer(&colorBuffer);
 				GLushort indicies[] = { 0, 1, 2, 2, 3, 0 };
 				m_IndexBuffer = new IndexBuffer(indicies, 6);
 			}

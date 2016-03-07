@@ -18,8 +18,8 @@ namespace LivingEnd {
 				a_IBO.bind();
 				renderable->getShader().setUnifromMat4("model_matrix", glm::translate(renderable->getPosition()));
 				glDrawElements(GL_TRIANGLES, a_IBO.getCount(), GL_UNSIGNED_SHORT, 0);
-				a_VAO.unbind();
 				a_IBO.unbind();
+				a_VAO.unbind();
 				m_RenderQueue.pop_front(); 
 			}
 		}

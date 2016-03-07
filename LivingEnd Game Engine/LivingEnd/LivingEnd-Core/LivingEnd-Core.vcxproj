@@ -81,8 +81,8 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)LivingEnd-Core/dep/glfw;</AdditionalLibraryDirectories>
+      <AdditionalDependencies>FBXLoader.lib;opengl32.lib;glfw3.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)LivingEnd-Core/dep/glfw;$(SolutionDir)LivingEnd-Core/dep/FBXLoader;</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -125,24 +125,35 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="dep\gl_core_4_4.c" />
-    <ClCompile Include="src\graphics\IndexBuffer.cpp" />
-    <ClCompile Include="src\graphics\Simple2DRenderer.cpp" />
+    <ClCompile Include="src\graphics\Buffers\BufferLayout.cpp" />
+    <ClCompile Include="src\graphics\Buffers\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\graphics\Camera\BaseCamera.cpp" />
+    <ClCompile Include="src\graphics\Camera\FlyCamera.cpp" />
+    <ClCompile Include="src\graphics\FBXModel.cpp" />
+    <ClCompile Include="src\graphics\Buffers\IndexBuffer.cpp" />
+    <ClCompile Include="src\graphics\Mesh.cpp" />
     <ClCompile Include="src\graphics\shader.cpp" />
-    <ClCompile Include="src\graphics\VertexBuffer.cpp" />
+    <ClCompile Include="src\graphics\Buffers\VertexBuffer.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\graphics\window.cpp" />
-    <ClCompile Include="src\graphics\VertexArray.cpp" />
+    <ClCompile Include="src\graphics\Buffers\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\graphics\IndexBuffer.h" />
-    <ClInclude Include="src\graphics\Renderable2d.h" />
-    <ClInclude Include="src\graphics\IRenderer2d.h" />
+    <ClInclude Include="src\graphics\Buffers\BufferLayout.h" />
+    <ClInclude Include="src\graphics\Buffers\OpenGLBuffer.h" />
+    <ClInclude Include="src\graphics\Buffers\OpenGLRenderAPI.h" />
+    <ClInclude Include="src\graphics\Camera\BaseCamera.h" />
+    <ClInclude Include="src\graphics\Camera\FlyCamera.h" />
+    <ClInclude Include="src\graphics\FBXModel.h" />
+    <ClInclude Include="src\graphics\Buffers\IndexBuffer.h" />
+    <ClInclude Include="src\graphics\IRenderable.h" />
+    <ClInclude Include="src\graphics\Mesh.h" />
     <ClInclude Include="src\graphics\shader.h" />
-    <ClInclude Include="src\graphics\Simple2DRenderer.h" />
-    <ClInclude Include="src\graphics\VertexBuffer.h" />
+    <ClInclude Include="src\graphics\Buffers\VertexBuffer.h" />
+    <ClInclude Include="src\Types.h" />
     <ClInclude Include="src\graphics\window.h" />
     <ClInclude Include="src\utilities\fileInput.h" />
-    <ClInclude Include="src\graphics\VertexArray.h" />
+    <ClInclude Include="src\graphics\Buffers\VertexArray.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

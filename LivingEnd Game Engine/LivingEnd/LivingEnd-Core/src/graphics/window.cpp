@@ -74,8 +74,8 @@ namespace LivingEnd {
 		}
 		void Window::getMousePostion(glm::vec2 &mousePos) const
 		{
-			mousePos.x = mx;
-			mousePos.y = my;
+			mousePos.x = (float)mx;
+			mousePos.y = (float)my;
 		}
 		void Window::clear() const
 		{

@@ -1,0 +1,50 @@
+﻿  gl_core_4_4.c
+  VertexArray.cpp
+c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\src\graphics\buffers\openglrenderapi.h(206): warning C4312: 'type cast': conversion from 'uint' to 'const GLvoid *' of greater size
+  window.cpp
+  main.cpp
+c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\src\graphics\buffers\openglrenderapi.h(206): warning C4312: 'type cast': conversion from 'uint' to 'const GLvoid *' of greater size
+  VertexBuffer.cpp
+  shader.cpp
+  Mesh.cpp
+c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\src\graphics\buffers\openglrenderapi.h(206): warning C4312: 'type cast': conversion from 'uint' to 'const GLvoid *' of greater size
+  IndexBuffer.cpp
+  FBXModel.cpp
+c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\dep\fbxloader\fbxfile.h(318): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
+c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\dep\fbxloader\fbxfile.h(319): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
+c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\dep\fbxloader\fbxfile.h(320): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
+c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\dep\fbxloader\fbxfile.h(321): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
+c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\dep\fbxloader\fbxfile.h(322): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
+c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\dep\fbxloader\fbxfile.h(323): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
+c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\dep\fbxloader\fbxfile.h(324): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
+  FlyCamera.cpp
+  BaseCamera.cpp
+  OpenGLBuffer.cpp
+c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\src\graphics\buffers\openglrenderapi.h(206): warning C4312: 'type cast': conversion from 'uint' to 'const GLvoid *' of greater size
+  BufferLayout.cpp
+  Generating Code...
+FlyCamera.obj : error LNK2019: unresolved external symbol glfwGetFramebufferSize referenced in function "protected: void __cdecl LivingEnd::Graphics::FlyCamera::HandleMouseInput(double)" (?HandleMouseInput@FlyCamera@Graphics@LivingEnd@@IEAAXN@Z)
+window.obj : error LNK2001: unresolved external symbol glfwGetFramebufferSize
+FlyCamera.obj : error LNK2019: unresolved external symbol glfwGetKey referenced in function "protected: void __cdecl LivingEnd::Graphics::FlyCamera::HandleKeyboardInput(double)" (?HandleKeyboardInput@FlyCamera@Graphics@LivingEnd@@IEAAXN@Z)
+FlyCamera.obj : error LNK2019: unresolved external symbol glfwGetMouseButton referenced in function "protected: void __cdecl LivingEnd::Graphics::FlyCamera::HandleMouseInput(double)" (?HandleMouseInput@FlyCamera@Graphics@LivingEnd@@IEAAXN@Z)
+FlyCamera.obj : error LNK2019: unresolved external symbol glfwGetCursorPos referenced in function "protected: void __cdecl LivingEnd::Graphics::FlyCamera::HandleMouseInput(double)" (?HandleMouseInput@FlyCamera@Graphics@LivingEnd@@IEAAXN@Z)
+FlyCamera.obj : error LNK2019: unresolved external symbol glfwSetCursorPos referenced in function "protected: void __cdecl LivingEnd::Graphics::FlyCamera::HandleMouseInput(double)" (?HandleMouseInput@FlyCamera@Graphics@LivingEnd@@IEAAXN@Z)
+FBXModel.obj : error LNK2019: unresolved external symbol "public: bool __cdecl FBXFile::load(char const *,enum FBXFile::UNIT_SCALE,bool,bool,bool)" (?load@FBXFile@@QEAA_NPEBDW4UNIT_SCALE@1@_N22@Z) referenced in function "public: void __cdecl LivingEnd::Graphics::FBXModel::Init(char const *)" (?Init@FBXModel@Graphics@LivingEnd@@QEAAXPEBD@Z)
+FBXModel.obj : error LNK2019: unresolved external symbol "public: void __cdecl FBXFile::unload(void)" (?unload@FBXFile@@QEAAXXZ) referenced in function "public: __cdecl FBXFile::~FBXFile(void)" (??1FBXFile@@QEAA@XZ)
+window.obj : error LNK2019: unresolved external symbol glfwInit referenced in function "private: bool __cdecl LivingEnd::Graphics::Window::init(void)" (?init@Window@Graphics@LivingEnd@@AEAA_NXZ)
+window.obj : error LNK2019: unresolved external symbol glfwTerminate referenced in function "public: __cdecl LivingEnd::Graphics::Window::Window(int,int,char *)" (??0Window@Graphics@LivingEnd@@QEAA@HHPEAD@Z)
+window.obj : error LNK2019: unresolved external symbol glfwCreateWindow referenced in function "private: bool __cdecl LivingEnd::Graphics::Window::init(void)" (?init@Window@Graphics@LivingEnd@@AEAA_NXZ)
+window.obj : error LNK2019: unresolved external symbol glfwDestroyWindow referenced in function "private: bool __cdecl LivingEnd::Graphics::Window::init(void)" (?init@Window@Graphics@LivingEnd@@AEAA_NXZ)
+window.obj : error LNK2019: unresolved external symbol glfwWindowShouldClose referenced in function "public: bool __cdecl LivingEnd::Graphics::Window::closed(void)const " (?closed@Window@Graphics@LivingEnd@@QEBA_NXZ)
+window.obj : error LNK2019: unresolved external symbol glfwSetWindowUserPointer referenced in function "private: bool __cdecl LivingEnd::Graphics::Window::init(void)" (?init@Window@Graphics@LivingEnd@@AEAA_NXZ)
+window.obj : error LNK2019: unresolved external symbol glfwGetWindowUserPointer referenced in function "void __cdecl LivingEnd::Graphics::cursor_position_callback(struct GLFWwindow *,double,double)" (?cursor_position_callback@Graphics@LivingEnd@@YAXPEAUGLFWwindow@@NN@Z)
+window.obj : error LNK2019: unresolved external symbol glfwSetWindowSizeCallback referenced in function "private: bool __cdecl LivingEnd::Graphics::Window::init(void)" (?init@Window@Graphics@LivingEnd@@AEAA_NXZ)
+window.obj : error LNK2019: unresolved external symbol glfwPollEvents referenced in function "public: void __cdecl LivingEnd::Graphics::Window::update(void)" (?update@Window@Graphics@LivingEnd@@QEAAXXZ)
+window.obj : error LNK2019: unresolved external symbol glfwSetKeyCallback referenced in function "private: bool __cdecl LivingEnd::Graphics::Window::init(void)" (?init@Window@Graphics@LivingEnd@@AEAA_NXZ)
+window.obj : error LNK2019: unresolved external symbol glfwSetMouseButtonCallback referenced in function "private: bool __cdecl LivingEnd::Graphics::Window::init(void)" (?init@Window@Graphics@LivingEnd@@AEAA_NXZ)
+window.obj : error LNK2019: unresolved external symbol glfwSetCursorPosCallback referenced in function "private: bool __cdecl LivingEnd::Graphics::Window::init(void)" (?init@Window@Graphics@LivingEnd@@AEAA_NXZ)
+window.obj : error LNK2019: unresolved external symbol glfwMakeContextCurrent referenced in function "private: bool __cdecl LivingEnd::Graphics::Window::init(void)" (?init@Window@Graphics@LivingEnd@@AEAA_NXZ)
+window.obj : error LNK2019: unresolved external symbol glfwSwapBuffers referenced in function "public: void __cdecl LivingEnd::Graphics::Window::update(void)" (?update@Window@Graphics@LivingEnd@@QEAAXXZ)
+C:\Users\dylan.mcmahon\Documents\LivingEnd-Game-Engine\LivingEnd Game Engine\LivingEnd\LivingEnd-Core/dep/FBXLoader\FBXLoader.lib : warning LNK4272: library machine type 'X86' conflicts with target machine type 'x64'
+C:\Users\dylan.mcmahon\Documents\LivingEnd-Game-Engine\LivingEnd Game Engine\LivingEnd\LivingEnd-Core/dep/glfw\glfw3.lib : warning LNK4272: library machine type 'X86' conflicts with target machine type 'x64'
+C:\Users\dylan.mcmahon\Documents\LivingEnd-Game-Engine\LivingEnd Game Engine\LivingEnd\x64\Debug\LivingEnd-Core.exe : fatal error LNK1120: 21 unresolved externals

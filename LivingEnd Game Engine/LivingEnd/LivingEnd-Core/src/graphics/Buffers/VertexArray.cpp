@@ -26,7 +26,7 @@ namespace LivingEnd {
 
 		void VertexArray::PushBuffer(API::Buffer* buffer)
 		{
-			_ASSERT(s_CurrentBinding == m_ID);
+			//_ASSERT(s_CurrentBinding == m_ID);
 
 			m_Buffers.push_back(buffer);
 

@@ -1,0 +1,3 @@
+﻿LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+FBXLoader_d.lib(FBXFile.obj) : warning LNK4099: PDB 'FBXFix.pdb' was not found with 'FBXLoader_d.lib(FBXFile.obj)' or at 'C:\Users\dylan.mcmahon\Documents\LivingEnd-Game-Engine\LivingEnd Game Engine\LivingEnd\Debug\FBXFix.pdb'; linking object as if no debug info
+  LivingEnd-Core.vcxproj -> C:\Users\dylan.mcmahon\Documents\LivingEnd-Game-Engine\LivingEnd Game Engine\LivingEnd\Debug\LivingEnd-Core.exe

@@ -6,11 +6,6 @@
 #include "glm\glm\ext.hpp"
 namespace LivingEnd {
 	namespace Graphics {
-		struct Vertex
-		{
-			glm::vec3 vertex;
-			glm::vec4 color;
-		};
 
 		class Renderer2D
 		{

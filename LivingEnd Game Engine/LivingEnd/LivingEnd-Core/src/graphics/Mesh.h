@@ -7,7 +7,7 @@
 namespace LivingEnd {
 	namespace Graphics
 	{
-		struct Vertex
+		struct MeshVertex
 		{
 			glm::vec3 position;
 			glm::vec3 normal;

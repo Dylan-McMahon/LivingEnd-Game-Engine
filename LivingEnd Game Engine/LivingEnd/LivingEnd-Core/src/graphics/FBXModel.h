@@ -6,10 +6,10 @@
 #include "Buffers\OpenGLBuffer.h"
 namespace LivingEnd { namespace Graphics {
 
-	class FBXModel : public IRenderable
+	class FBXModel /*: public IRenderable*/
 	{
 	public:
-		FBXModel(const char* model_path, const char* shader_path);
+		FBXModel(const char* model_path);
 		~FBXModel();
 		void Init(const char* path);
 		void Render();

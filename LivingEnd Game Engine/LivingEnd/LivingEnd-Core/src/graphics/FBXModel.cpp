@@ -5,7 +5,7 @@ namespace LivingEnd { namespace Graphics {
 	void create_OpenGL_Buffers(FBXFile* fbx);
 	void cleanup_OpenGl_Buffers(FBXFile* fbx);
 
-	FBXModel::FBXModel(const char* model_path, const char* shader_path)
+	FBXModel::FBXModel(const char* model_path)
 	{
 		Init(model_path);
 		m_Shader = new Shader("data/Shaders/FBXVertexShader.vs", "data/Shaders/FBXFragmentShader.fs");
@@ -43,7 +43,7 @@ namespace LivingEnd { namespace Graphics {
 		for (uint i = 0; i < fbx->getMeshCount(); ++i)
 		{
 			FBXMeshNode* mesh = fbx->getMeshByIndex(i);
-			uint* glData = new uint[3];
+		    uint* glData = new uint[3];
 			glGenVertexArrays(1, &glData[0]);
 			glBindVertexArray(glData[0]);
 
@@ -65,9 +65,7 @@ namespace LivingEnd { namespace Graphics {
 			glBindVertexArray(0);
 			glBindBuffer(GL_ARRAY_BUFFER, 0);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
 			mesh->m_userData = glData;
-			delete[] glData;
 		}
 	}
 
@@ -83,7 +81,8 @@ namespace LivingEnd { namespace Graphics {
 			glDeleteBuffers(1, &glData[1]);
 			glDeleteBuffers(1, &glData[2]);
 
-			delete[] glData;
+		    delete[] glData;
+
 		}
 	}
 }

@@ -1,3 +1,5 @@
-﻿LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
-FBXLoader_d.lib(FBXFile.obj) : warning LNK4099: PDB 'FBXFix.pdb' was not found with 'FBXLoader_d.lib(FBXFile.obj)' or at 'C:\Users\dylan.mcmahon\Documents\LivingEnd-Game-Engine\LivingEnd Game Engine\LivingEnd\Debug\FBXFix.pdb'; linking object as if no debug info
-  LivingEnd-Core.vcxproj -> C:\Users\dylan.mcmahon\Documents\LivingEnd-Game-Engine\LivingEnd Game Engine\LivingEnd\Debug\LivingEnd-Core.exe
+﻿  main.cpp
+c:\users\deckard cain\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\dep\fbxloader\fbxfile.h(3): warning C4005: 'GLM_FORCE_PURE': macro redefinition
+  c:\users\deckard cain\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\dep\fbxloader\fbxfile.h(3): note: command-line arguments:  see previous definition of 'GLM_FORCE_PURE'
+c:\users\deckard cain\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\src\main.cpp(90): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  LivingEnd-Core.vcxproj -> C:\Users\Deckard Cain\Documents\LivingEnd-Game-Engine\LivingEnd Game Engine\LivingEnd\Debug\LivingEnd-Core.exe

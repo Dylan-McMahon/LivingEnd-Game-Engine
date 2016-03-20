@@ -157,6 +157,7 @@
     <ClInclude Include="src\graphics\Buffers\IndexBuffer.h" />
     <ClInclude Include="src\graphics\IRenderable.h" />
     <ClInclude Include="src\graphics\Mesh.h" />
+    <ClInclude Include="src\graphics\Renderer3D.h" />
     <ClInclude Include="src\graphics\shader.h" />
     <ClInclude Include="src\graphics\Buffers\VertexBuffer.h" />
     <ClInclude Include="src\Types.h" />

@@ -63,7 +63,7 @@ int main()
 	temp.Unbind();
 
 	camera.LookAt(glm::vec3(10), glm::vec3(0), glm::vec3(1));
-	camera.SetupPerspective(glm::pi<float>() * 0.25, 16 / 9.f);
+	camera.SetupPerspective(glm::pi<float>() * 0.25f, (float)window.getWidth() / (float)window.getHeight(), 0.1f, 1000.f);
 	//
 	//Set Shader
 	//
@@ -74,20 +74,26 @@ int main()
 	shader.disable();
 	//create model
 	//FBXModel model("data/FBXModels/soulspear.fbx");
+
 	//TODO: put this somehwere
 	float oldtime = 0.f;
 	float newtime = 0.f;
-
+	float DeltaTime = 0.f;
 	uint indexcount = (m_rows - 1) * (m_cols - 1) * 6;
+
 	//Game loop
 	while (!window.closed())
 	{
 		window.clear();
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
+		//calculate dt
 		oldtime = newtime;
 		newtime = glfwGetTime();
-		camera.Update(newtime - oldtime);
+		DeltaTime = (newtime - oldtime) / 16;
+
+
+		camera.Update(DeltaTime);
 
 		shader.enable();
 		temp.Bind();
@@ -98,6 +104,7 @@ int main()
 		//model.Render();
 
 		window.update();
+		std::cout << newtime - oldtime << std::endl;
 	}
 	system("pause");
 	delete[] aoVerts;

@@ -26,8 +26,9 @@ namespace LivingEnd {
 
 		void VertexArray::PushBuffer(API::Buffer* buffer)
 		{
-			//_ASSERT(s_CurrentBinding == m_ID);
-
+#ifdef LivingEnd_DEBUG
+			_ASSERT(s_CurrentBinding == m_ID);
+#endif
 			m_Buffers.push_back(buffer);
 
 			const std::vector<BufferLayoutType>& layout = buffer->layout.GetLayout();

@@ -3,10 +3,8 @@
 
 #include "graphics\Camera\FlyCamera.h"
 
-#include "graphics\Buffers\VertexArray.h"
-#include "graphics\Buffers\OpenGLBuffer.h"
-
 #include "graphics\FBXModel.h"
+#include "graphics\Grid.h"
 
 int main()
 {
@@ -16,70 +14,33 @@ int main()
 	//Create window
 	Window window(960, 540, "LivingEnd Test Screen");
 	glClearColor(0.28f, 0.28f, 0.28f, 1.0f);
+	//
+	// Setup Camera
+	//
 	FlyCamera camera;
 	camera.SetInputWindow(window.getWindow());
-	//
-	//Temp Buffers
-	//
-	VertexArray temp;
-	temp.Bind();
-	API::Buffer * vbo = new API::Buffer(GL_ARRAY_BUFFER, GL_STATIC_DRAW);
-	uint m_rows = 20;
-	uint m_cols = 20;
-	LivingEnd::Graphics::Vertex* aoVerts = new LivingEnd::Graphics::Vertex[m_rows * m_cols];
-	for (uint r = 0; r < m_rows; ++r)
-	{
-		for (uint c = 0; c < m_cols; ++c)
-		{
-			aoVerts[r * m_cols + c].position = glm::vec4((float)c, 0, (float)r, 1);
-
-			glm::vec3 colour = glm::vec3(sinf((c / (float)(m_cols - 1))*(r / (float)(m_rows - 1))));
-			aoVerts[r * m_cols + c].color = glm::vec4(colour, 1);
-		}
-	}
-	vbo->Bind();
-	vbo->SetData((m_rows * m_cols) * sizeof(Vertex), aoVerts);
-	temp.PushBuffer(vbo);
-	API::Buffer * ibo = new API::Buffer(GL_ELEMENT_ARRAY_BUFFER, GL_STATIC_DRAW);
-	uint* auIndicies = new uint[(m_rows - 1) * (m_cols - 1) * 6];
-	uint index = 0;
-	for (uint r = 0; r < (m_rows - 1); ++r)
-	{
-		for (uint c = 0; c < (m_cols - 1); ++c)
-		{
-			//tri 1
-			auIndicies[index++] = r * m_cols + c;
-			auIndicies[index++] = (r + 1) * m_cols + c;
-			auIndicies[index++] = (r + 1) * m_cols + (c + 1);
-
-			auIndicies[index++] = r * m_cols + c;
-			auIndicies[index++] = (r + 1) * m_cols + (c + 1);
-			auIndicies[index++] = r * m_cols + (c + 1);
-		}
-	}
-	ibo->Bind();
-	ibo->SetData((m_rows - 1) * (m_cols - 1) * 6 * sizeof(uint), auIndicies);
-	temp.PushBuffer(ibo);
-	temp.Unbind();
-
-	camera.LookAt(glm::vec3(10), glm::vec3(0), glm::vec3(1));
+	camera.LookAt(glm::vec3(10), glm::vec3(0), glm::vec3(0, 1, 0));
 	camera.SetupPerspective(glm::pi<float>() * 0.25f, (float)window.getWidth() / (float)window.getHeight(), 0.1f, 1000.f);
 	//
-	//Set Shader
+	// Set Shader
 	//
 	Shader shader("data/Shaders/BasicVertexShader.vs", "data/Shaders/BasicFragmentShader.fs");
 	shader.enable();
 	shader.setUnifromMat4("ProjectionView_matrix", camera.GetProjectionView());
 	shader.setUnifrom4f("Colour", glm::vec4(0.2f, 0.3f, 0.8f, 1.0f));
 	shader.disable();
-	//create model
-	//FBXModel model("data/FBXModels/soulspear.fbx");
-
-	//TODO: put this somehwere
+	//
+	// Create models
+	//
+	Grid grid(20, 20);
+	FBXModel model("data/FBXModels/soulspear.fbx");
+	//
+	// Create DeltaTime
+	// TODO: Put this somewhere
 	float oldtime = 0.f;
 	float newtime = 0.f;
+	//TODO: put this somehwere
 	float DeltaTime = 0.f;
-	uint indexcount = (m_rows - 1) * (m_cols - 1) * 6;
 
 	//Game loop
 	while (!window.closed())
@@ -90,26 +51,18 @@ int main()
 		//calculate dt
 		oldtime = newtime;
 		newtime = glfwGetTime();
-		DeltaTime = (newtime - oldtime) / 16;
-
-
+		DeltaTime = (newtime - oldtime);
 		camera.Update(DeltaTime);
 
 		shader.enable();
-		temp.Bind();
-		temp.Draw(indexcount);
-		temp.Unbind();
+		shader.setUnifromMat4("ProjectionView_matrix", camera.GetProjectionView());
+		grid.Render(camera);
 		shader.disable();
 
-		//model.Render();
-
-		window.update();
-		std::cout << newtime - oldtime << std::endl;
+		model.Render(&camera);
+		
+window.update();
 	}
 	system("pause");
-	delete[] aoVerts;
-	delete[] auIndicies;
-	delete ibo;
-	delete vbo;
 	return 0;
 }

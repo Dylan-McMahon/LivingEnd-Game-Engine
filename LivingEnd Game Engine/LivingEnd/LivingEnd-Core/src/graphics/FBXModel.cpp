@@ -25,9 +25,10 @@ namespace LivingEnd { namespace Graphics {
 		create_OpenGL_Buffers(m_FBX);
 	}
 
-	void FBXModel::Render()
+	void FBXModel::Render(FlyCamera* a_pCamera)
 	{
 		m_Shader->enable();
+		m_Shader->setUnifromMat4("ProjectionView_matrix", a_pCamera->GetProjectionView());
 		for (uint i = 0; i < m_FBX->getMeshCount(); ++i)
 		{
 			FBXMeshNode* mesh = m_FBX->getMeshByIndex(i);
@@ -35,6 +36,7 @@ namespace LivingEnd { namespace Graphics {
 			glBindVertexArray(glData[0]);
 			glDrawElements(GL_TRIANGLES, (uint)mesh->m_indices.size(), GL_UNSIGNED_INT, 0);
 		}
+		m_Shader->disable();
 	}
 
 	void create_OpenGL_Buffers(FBXFile* fbx)

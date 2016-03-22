@@ -143,6 +143,7 @@
     <ClCompile Include="src\graphics\Mesh.cpp" />
     <ClCompile Include="src\graphics\shader.cpp" />
     <ClCompile Include="src\graphics\Buffers\VertexBuffer.cpp" />
+    <ClCompile Include="src\graphics\Grid.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\graphics\window.cpp" />
     <ClCompile Include="src\graphics\Buffers\VertexArray.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="src\graphics\Camera\FlyCamera.h" />
     <ClInclude Include="src\graphics\FBXModel.h" />
     <ClInclude Include="src\graphics\Buffers\IndexBuffer.h" />
+    <ClInclude Include="src\graphics\Grid.h" />
     <ClInclude Include="src\graphics\IRenderable.h" />
     <ClInclude Include="src\graphics\Mesh.h" />
     <ClInclude Include="src\graphics\Renderer3D.h" />

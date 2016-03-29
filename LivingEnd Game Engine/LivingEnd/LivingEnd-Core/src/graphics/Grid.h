@@ -5,14 +5,16 @@ namespace LivingEnd
 {
 	namespace Graphics 
 	{
+
 		class Grid : public Mesh
 		{
 		public:
 			Grid(uint rows, uint cols);
 			~Grid();
-		protected:
 			void GenerateGrid();
+			void GeneratePerlin();
 		private:
+			float * m_PerlinData;
 			uint m_Rows;
 			uint m_Cols;
 			VertexArray m_VertexArray;

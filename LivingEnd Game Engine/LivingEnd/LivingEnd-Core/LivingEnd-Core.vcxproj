@@ -144,6 +144,7 @@
     <ClCompile Include="src\graphics\shader.cpp" />
     <ClCompile Include="src\graphics\Buffers\VertexBuffer.cpp" />
     <ClCompile Include="src\graphics\Grid.cpp" />
+    <ClCompile Include="src\graphics\Texture.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\graphics\window.cpp" />
     <ClCompile Include="src\graphics\Buffers\VertexArray.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="src\graphics\Renderer3D.h" />
     <ClInclude Include="src\graphics\shader.h" />
     <ClInclude Include="src\graphics\Buffers\VertexBuffer.h" />
+    <ClInclude Include="src\graphics\Texture.h" />
     <ClInclude Include="src\Types.h" />
     <ClInclude Include="src\graphics\window.h" />
     <ClInclude Include="src\utilities\fileInput.h" />

@@ -33,6 +33,11 @@ int main()
 	// Create models
 	//
 	Grid grid(20, 20);
+	grid.GenerateGrid();
+
+	Grid perlinGrid(20, 0);
+	perlinGrid.GeneratePerlin();
+
 	FBXModel model("data/FBXModels/soulspear.fbx");
 	//
 	// Create DeltaTime
@@ -56,7 +61,8 @@ int main()
 
 		shader.enable();
 		shader.setUnifromMat4("ProjectionView_matrix", camera.GetProjectionView());
-		grid.Render(camera);
+		//grid.Render(camera);
+		perlinGrid.Render(camera);
 		shader.disable();
 
 		model.Render(&camera);

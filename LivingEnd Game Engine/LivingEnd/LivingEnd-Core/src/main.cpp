@@ -52,17 +52,16 @@ int main()
 	{
 		window.clear();
 		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-
 		//calculate dt
 		oldtime = newtime;
 		newtime = glfwGetTime();
 		DeltaTime = (newtime - oldtime);
 		camera.Update(DeltaTime);
-
 		shader.enable();
 		shader.setUnifromMat4("ProjectionView_matrix", camera.GetProjectionView());
 		//grid.Render(camera);
 		perlinGrid.Render(camera);
+		
 		shader.disable();
 
 		model.Render(&camera);

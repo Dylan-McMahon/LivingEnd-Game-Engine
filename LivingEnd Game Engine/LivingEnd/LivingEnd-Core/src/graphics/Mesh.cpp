@@ -1,4 +1,5 @@
 #include "Mesh.h"
+#include <iostream>
 
 namespace LivingEnd {
 	namespace Graphics {
@@ -33,6 +34,9 @@ namespace LivingEnd {
 			{
 				m_VertexArray->Bind();
 				m_VertexArray->Draw(m_IndexCount);
+				GLenum error = glGetError();
+				if (error != GL_NO_ERROR)
+					std::cout << "OpenGL error: " << error << std::endl;
 				m_VertexArray->Unbind();
 			}
 			else

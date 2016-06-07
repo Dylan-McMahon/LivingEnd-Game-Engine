@@ -1,9 +1,13 @@
 #pragma once
 #include "Buffers\VertexArray.h"
 #include "Buffers\IndexBuffer.h"
+#include "Texture.h"
+#include "shader.h"
 
 #include "IRenderable.h"
 #include "glm\glm\ext.hpp"
+
+
 namespace LivingEnd 
 {
 	namespace Graphics

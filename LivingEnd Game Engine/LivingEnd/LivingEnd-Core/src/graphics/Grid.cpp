@@ -22,7 +22,7 @@ namespace LivingEnd {
 
 		void Grid::GenerateGrid()
 		{
-			m_VertexArray->Bind();
+			m_VertexArray.Bind();
 			//
 			//Generate vertex positions
 			//
@@ -40,7 +40,7 @@ namespace LivingEnd {
 			m_VBO->SetData((m_Rows * m_Cols) * sizeof(MeshVertex), m_aoVerts);
 			m_VBO->layout.Push<glm::vec4>("Position", 1, false);
 			//TODO: Push color
-			m_VertexArray->PushBuffer(m_VBO);
+			m_VertexArray.PushBuffer(m_VBO);
 			//
 			// Generate Indicies
 			//
@@ -70,6 +70,8 @@ namespace LivingEnd {
 		void Grid::GeneratePerlin()
 		{
 			m_Shader = new Shader("../data/Shaders/BasicVertexShader.vs", "../data/Shaders/BasicFragmentShader.fs");
+
+			m_Shader->setUnifromMat4("ProjectionView_matrix", camera.GetProjectionView());
 
 			m_VertexArray.Bind();
 			uint dims = m_Rows;
@@ -129,40 +131,11 @@ namespace LivingEnd {
 			m_VertexArray.PushBuffer(m_IBO);
 			m_VertexArray.Unbind();
 
-			m_Texture->GeneratePerlinTexture(64, 64, GL_RED, m_PerlinData);
-		}
-
-		void Grid::Render(FlyCamera& camera)
-		{
-			m_Shader->enable();
-			m_Shader->setUnifromMat4("ProjectionView_matrix", camera.GetProjectionView());
-
-
-			if (m_RenderMode = Manual)
+			if (m_Texture == nullptr)
 			{
-				m_VertexArray.Bind();
-				m_IndexBuffer->Bind();
-				m_Texture->Bind();
-				m_VertexArray.Draw(m_IndexBuffer->GetCount());
-				m_Texture->UnBind();
-				m_IndexBuffer->Unbind();
-				m_VertexArray.Unbind();
+				m_Texture = new Texture();
+				m_Texture->GeneratePerlinTexture(64, 64, GL_RED, m_PerlinData);
 			}
-			else if (m_RenderMode = RenderAPI)
-			{
-				m_VertexArray.Bind();
-				m_Texture->Bind();
-				m_VertexArray.Draw(m_IndexCount);
-				m_Texture->UnBind();
-				m_VertexArray.Unbind();
-			}
-			else
-			{
-				//TODO: Name and log
-				std::printf("Render Mode Not Initialized");
-			}
-
-			m_Shader->disable();
 		}
 	}
 }

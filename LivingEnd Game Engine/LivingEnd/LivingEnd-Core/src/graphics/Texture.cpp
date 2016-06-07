@@ -1,4 +1,5 @@
 #include "Texture.h"
+#include <iostream>
 
 namespace LivingEnd
 {
@@ -50,15 +51,18 @@ namespace LivingEnd
 			{
 				m_Texture = API::CreateTexture();
 				API::BindTexture(GL_TEXTURE_2D, m_Texture);
-				API::SetTextureData(GL_TEXTURE_2D, GL_RGB, width, height, format, GL_UNSIGNED_BYTE, data);
-				API::SetTextureParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+				API::SetTextureData(GL_TEXTURE_2D, GL_R32F, width, height, format, GL_FLOAT, data);
 				API::SetTextureParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+				API::SetTextureParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 				API::SetTextureParameter(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 				API::SetTextureParameter(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 				if (m_Shader == nullptr)
 				{
 					m_Shader = new Shader("../data/Shaders/TerrainVertexShader.vs", "../data/Shaders/TerrainFragmentShader.fs");
 				}
+				GLenum error = glGetError();
+				if (error != GL_NO_ERROR)
+					std::cout << "OpenGL error: " << error << std::endl;
 			}
 		}
 	}

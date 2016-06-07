@@ -1,8 +1,5 @@
 #pragma once
 #include "Mesh.h"
-#include "Texture.h"
-#include "shader.h"
-#include "Camera\FlyCamera.h"
 
 namespace LivingEnd 
 {
@@ -16,8 +13,6 @@ namespace LivingEnd
 			~Grid();
 			void GenerateGrid();
 			void GeneratePerlin();
-
-			void Render(FlyCamera& camera) override;
 
 			inline float* GetPerlinData() const { return m_PerlinData; };
 

@@ -1,5 +1,6 @@
 #include "Mesh.h"
 #include <iostream>
+#include "Camera\FlyCamera.h"
 
 namespace LivingEnd {
 	namespace Graphics {
@@ -28,18 +29,26 @@ namespace LivingEnd {
 
 		void Mesh::Render(FlyCamera& camera)
 		{
+			//m_Shader->enable();
+			//m_Shader->setUnifromMat4("ProjectionView_matrix", camera.GetProjectionView());
+
+
 			if (m_RenderMode = Manual)
 			{
 				m_VertexArray->Bind();
 				m_IndexBuffer->Bind();
+				m_Texture->Bind();
 				m_VertexArray->Draw(m_IndexBuffer->GetCount());
+				m_Texture->UnBind();
 				m_IndexBuffer->Unbind();
 				m_VertexArray->Unbind();
 			}
 			else if (m_RenderMode = RenderAPI)
 			{
 				m_VertexArray->Bind();
+				m_Texture->Bind();
 				m_VertexArray->Draw(m_IndexCount);
+				m_Texture->UnBind();
 				m_VertexArray->Unbind();
 			}
 			else
@@ -47,6 +56,8 @@ namespace LivingEnd {
 				//TODO: Name and log
 				std::printf("Mesh not initialized");
 			}
+
+			//m_Shader->disable();
 		}
 	}
 }

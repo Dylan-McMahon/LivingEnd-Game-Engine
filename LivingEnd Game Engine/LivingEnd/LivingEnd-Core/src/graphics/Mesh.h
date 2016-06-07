@@ -27,12 +27,15 @@ namespace LivingEnd
 			Mesh(VertexArray* vertexArray, IndexBuffer* indexBuffer);
 			~Mesh();
 			virtual void Render(FlyCamera& camera) override;
-		private:
-			VertexArray * m_VertexArray = nullptr;
-			IndexBuffer * m_IndexBuffer = nullptr;
+			inline Texture* GetTexture() { return m_Texture; };
+			inline Shader* GetShader() { return m_Shader; };
+		protected:
+			VertexArray* m_VertexArray = nullptr;
+			IndexBuffer* m_IndexBuffer = nullptr;
 			MeshMode m_RenderMode = NotInit;
 			uint m_IndexCount;
-			//TODO: Shader
+			Shader* m_Shader;
+			Texture* m_Texture;
 			//TODO: Material
 		};
 	}

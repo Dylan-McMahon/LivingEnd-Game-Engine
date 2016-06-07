@@ -14,7 +14,7 @@ namespace LivingEnd {
 			void Bind();
 			void UnBind();
 			void LoadTexture(char* filePath);
-			void GeneratePerlinTexture(int width, int height, int format, byte* data);
+			void GeneratePerlinTexture(int width, int height, int format, float* data);
 
 			inline Shader* GetShader()const { return m_Shader; };
 			inline uint GetTextureID()const { return m_Texture; };

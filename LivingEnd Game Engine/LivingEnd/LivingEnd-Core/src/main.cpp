@@ -6,6 +6,8 @@
 #include "graphics\FBXModel.h"
 #include "graphics\Grid.h"
 
+#include "graphics\Texture.h"
+
 int main()
 {
 	using namespace LivingEnd;
@@ -34,8 +36,8 @@ int main()
 	//
 	Grid grid(20, 20);
 	grid.GenerateGrid();
-
-	Grid perlinGrid(20, 0);
+	//perlin data
+	Grid perlinGrid(64, 64);
 	perlinGrid.GeneratePerlin();
 
 	FBXModel model("data/FBXModels/soulspear.fbx");
@@ -57,12 +59,9 @@ int main()
 		newtime = glfwGetTime();
 		DeltaTime = (newtime - oldtime);
 		camera.Update(DeltaTime);
-		shader.enable();
-		shader.setUnifromMat4("ProjectionView_matrix", camera.GetProjectionView());
+
 		//grid.Render(camera);
 		perlinGrid.Render(camera);
-		
-		shader.disable();
 
 		model.Render(&camera);
 		

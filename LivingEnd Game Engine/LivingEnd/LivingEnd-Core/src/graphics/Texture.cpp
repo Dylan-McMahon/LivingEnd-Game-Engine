@@ -44,7 +44,7 @@ namespace LivingEnd
 				}
 			}
 		}
-		void Texture::GeneratePerlinTexture(int width, int height, int format, byte* data)
+		void Texture::GeneratePerlinTexture(int width, int height, int format, float* data)
 		{
 			if (m_ImageData == nullptr)
 			{

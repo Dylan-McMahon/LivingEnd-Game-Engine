@@ -8,16 +8,22 @@ namespace LivingEnd {
 			: m_VertexArray(vertexArray), m_IndexCount(count)
 		{		
 			m_RenderMode = RenderAPI;
+			m_Texture = nullptr;
+			m_Shader = nullptr;
 		}
 		Mesh::Mesh(VertexArray* vertexArray, IndexBuffer* indexBuffer)
 			: m_VertexArray(vertexArray), m_IndexBuffer(indexBuffer)
 		{
 			m_RenderMode = Manual;
+			m_Texture = nullptr;
+			m_Shader = nullptr;
 		}
 		Mesh::~Mesh()
 		{
 			delete m_VertexArray;
 			delete m_IndexBuffer;
+			delete m_Shader;
+			delete m_Texture;
 		}
 
 		void Mesh::Render(FlyCamera& camera)
@@ -34,9 +40,6 @@ namespace LivingEnd {
 			{
 				m_VertexArray->Bind();
 				m_VertexArray->Draw(m_IndexCount);
-				GLenum error = glGetError();
-				if (error != GL_NO_ERROR)
-					std::cout << "OpenGL error: " << error << std::endl;
 				m_VertexArray->Unbind();
 			}
 			else

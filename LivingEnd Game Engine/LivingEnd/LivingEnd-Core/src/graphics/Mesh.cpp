@@ -29,8 +29,8 @@ namespace LivingEnd {
 
 		void Mesh::Render(FlyCamera& camera)
 		{
-			//m_Shader->enable();
-			//m_Shader->setUnifromMat4("ProjectionView_matrix", camera.GetProjectionView());
+			m_Shader->enable();
+		    m_Shader->setUnifromMat4("ProjectionView_matrix", camera.GetProjectionView());
 
 
 			if (m_RenderMode = Manual)
@@ -57,7 +57,7 @@ namespace LivingEnd {
 				std::printf("Mesh not initialized");
 			}
 
-			//m_Shader->disable();
+			m_Shader->disable();
 		}
 	}
 }

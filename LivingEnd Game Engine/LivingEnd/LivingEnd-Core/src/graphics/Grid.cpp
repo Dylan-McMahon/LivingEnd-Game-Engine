@@ -69,10 +69,8 @@ namespace LivingEnd {
 
 		void Grid::GeneratePerlin()
 		{
-			m_Shader = new Shader("../data/Shaders/BasicVertexShader.vs", "../data/Shaders/BasicFragmentShader.fs");
-
-			m_Shader->setUnifromMat4("ProjectionView_matrix", camera.GetProjectionView());
-
+			//m_Shader = new Shader("../data/Shaders/BasicVertexShader.vs", "../data/Shaders/BasicFragmentShader.fs");
+			//m_Shader->setUnifromMat4("ProjectionView_matrix", projection_View);
 			m_VertexArray.Bind();
 			uint dims = m_Rows;
 

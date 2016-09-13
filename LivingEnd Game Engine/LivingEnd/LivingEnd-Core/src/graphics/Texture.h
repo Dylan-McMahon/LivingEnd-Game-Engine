@@ -3,6 +3,7 @@
 #include "Types.h"
 #include "Buffers\OpenGLRenderAPI.h"
 #include "shader.h"
+#include "Camera\FlyCamera.h"
 namespace LivingEnd {
 	namespace Graphics
 	{

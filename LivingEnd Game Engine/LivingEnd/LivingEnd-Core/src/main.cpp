@@ -34,8 +34,8 @@ int main()
 	//
 	// Create models
 	//
-	Grid grid(20, 20);
-	grid.GenerateGrid();
+	//Grid grid(20, 20);
+	//grid.GenerateGrid();
 	//perlin data
 	Grid perlinGrid(64, 64);
 	perlinGrid.GeneratePerlin();
@@ -59,12 +59,10 @@ int main()
 		newtime = glfwGetTime();
 		DeltaTime = (newtime - oldtime);
 		camera.Update(DeltaTime);
-
-		//grid.Render(camera);
 		perlinGrid.Render(camera);
+		//grid.Render(camera);
 
 		model.Render(&camera);
-		
 window.update();
 	}
 	system("pause");

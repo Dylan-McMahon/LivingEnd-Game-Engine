@@ -60,6 +60,9 @@ namespace LivingEnd
 				{
 					m_Shader = new Shader("../data/Shaders/TerrainVertexShader.vs", "../data/Shaders/TerrainFragmentShader.fs");
 				}
+				m_Shader->enable();
+				m_Shader->setUnifrom1i("perlin_texture", m_Texture);
+				m_Shader->disable();
 				GLenum error = glGetError();
 				if (error != GL_NO_ERROR)
 					std::cout << "OpenGL error: " << error << std::endl;

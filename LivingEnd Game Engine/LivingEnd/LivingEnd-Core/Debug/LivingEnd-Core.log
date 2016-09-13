@@ -1,4 +1,12 @@
-﻿  window.cpp
-  Texture.cpp
+﻿  Mesh.cpp
+  Grid.cpp
+c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\src\graphics\grid.cpp(85): warning C4018: '<': signed/unsigned mismatch
+c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\src\graphics\grid.cpp(87): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  Compiling...
+  main.cpp
+c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\dep\fbxloader\fbxfile.h(3): warning C4005: 'GLM_FORCE_PURE': macro redefinition
+  c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\dep\fbxloader\fbxfile.h(3): note: command-line arguments:  see previous definition of 'GLM_FORCE_PURE'
+c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\src\main.cpp(59): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   Generating Code...
   LivingEnd-Core.vcxproj -> C:\Users\dylan.mcmahon\Documents\LivingEnd-Game-Engine\LivingEnd Game Engine\LivingEnd\Debug\LivingEnd-Core.exe

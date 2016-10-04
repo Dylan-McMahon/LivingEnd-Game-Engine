@@ -27,6 +27,7 @@ namespace LivingEnd {
 			uint m_Texture;
 			byte* m_ImageData;
 			Shader* m_Shader;
+			int m_TextureSlot;
 		};
 	}
 }

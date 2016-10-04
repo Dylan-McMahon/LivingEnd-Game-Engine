@@ -12,6 +12,7 @@ namespace LivingEnd
 			m_ImageFormat = 0;
 			m_ImageData = nullptr;
 			m_Shader = nullptr;
+			m_TextureSlot = 0;
 
 		}
 		Texture::~Texture()
@@ -21,7 +22,7 @@ namespace LivingEnd
 		}
 		void Texture::Bind()
 		{
-			API::SetActiveTexture(m_Texture);
+			API::SetActiveTexture(GL_TEXTURE0 + m_TextureSlot);
 			API::BindTexture(GL_TEXTURE_2D, m_Texture);
 		}
 		void Texture::UnBind()
@@ -32,6 +33,11 @@ namespace LivingEnd
 		{
 			if (m_ImageData == nullptr)
 			{
+				if (m_Shader == nullptr)
+				{
+					m_Shader = new Shader("data/Shaders/TextureVertexShader.vs", "data/Shaders/TextureFragmentShader.fs");
+				}
+				m_Shader->enable();
 				m_ImageData = stbi_load(filePath, &m_ImageWidth, &m_ImageHeight, &m_ImageFormat, STBI_default);
 				m_Texture = API::CreateTexture();
 				API::BindTexture(GL_TEXTURE_2D, m_Texture);
@@ -39,33 +45,33 @@ namespace LivingEnd
 				API::SetTextureParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 				API::SetTextureParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 				stbi_image_free(m_ImageData);
-				if (m_Shader == nullptr)
-				{
-					m_Shader = new Shader("../data/Shaders/TextureVertexShader.vs", "../data/Shaders/TextureFragmentShader.fs");
-				}
+				API::SetActiveTexture(m_TextureSlot);
 			}
 		}
 		void Texture::GeneratePerlinTexture(int width, int height, int format, float* data)
 		{
 			if (m_ImageData == nullptr)
 			{
+				if (m_Shader == nullptr)
+				{
+					m_Shader = new Shader("data/Shaders/TerrainVertexShader.vs", "data/Shaders/TerrainFragmentShader.fs");
+				}
+				m_Shader->enable();
+
 				m_Texture = API::CreateTexture();
+				API::SetActiveTexture(GL_TEXTURE0 + m_TextureSlot);
 				API::BindTexture(GL_TEXTURE_2D, m_Texture);
 				API::SetTextureData(GL_TEXTURE_2D, GL_R32F, width, height, format, GL_FLOAT, data);
 				API::SetTextureParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 				API::SetTextureParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 				API::SetTextureParameter(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
 				API::SetTextureParameter(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-				if (m_Shader == nullptr)
-				{
-					m_Shader = new Shader("../data/Shaders/TerrainVertexShader.vs", "../data/Shaders/TerrainFragmentShader.fs");
-				}
-				m_Shader->enable();
-				m_Shader->setUnifrom1i("perlin_texture", m_Texture);
+
+				m_Shader->setUnifrom1i("perlin_texture", m_TextureSlot);
 				m_Shader->disable();
-				GLenum error = glGetError();
-				if (error != GL_NO_ERROR)
-					std::cout << "OpenGL error: " << error << std::endl;
+				////GLenum error = glGetError();
+				//if (error != GL_NO_ERROR)
+				//	std::cout << "OpenGL error: " << error << std::endl;
 			}
 		}
 	}

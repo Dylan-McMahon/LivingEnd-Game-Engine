@@ -22,6 +22,12 @@ namespace LivingEnd {
 
 		void Grid::GenerateGrid()
 		{
+			if (m_Shader == nullptr)
+			{
+				m_Shader = new Shader("data/Shaders/BasicVertexShader.vs", "data/Shaders/BasicFragmentShader.fs");
+			}
+			m_Shader->enable();
+
 			m_VertexArray.Bind();
 			//
 			//Generate vertex positions
@@ -65,16 +71,53 @@ namespace LivingEnd {
 			m_IBO->SetData((m_Rows - 1) * (m_Cols - 1) * 6 * sizeof(uint), m_auIndicies);
 			m_VertexArray.PushBuffer(m_IBO);
 			m_VertexArray.Unbind();
+			m_Shader->disable();
 		}
 
 		void Grid::GeneratePerlin()
 		{
-			//m_Shader = new Shader("../data/Shaders/BasicVertexShader.vs", "../data/Shaders/BasicFragmentShader.fs");
-			//m_Shader->setUnifromMat4("ProjectionView_matrix", projection_View);
 			m_VertexArray.Bind();
 			uint dims = m_Rows;
-
 			m_VBO = new API::Buffer(GL_ARRAY_BUFFER, GL_STATIC_DRAW);
+			m_aoVerts = new MeshVertex[m_Rows * m_Cols];
+			for (uint r = 0; r < m_Rows; ++r)
+			{
+				for (uint c = 0; c < m_Cols; ++c)
+				{
+					m_aoVerts[r * m_Cols + c].Position = glm::vec4((float)c - (m_Cols / 2), 0, (float)r - (m_Rows / 2), 1);
+					m_aoVerts[r * m_Cols + c].uv = glm::vec2((float)c / m_Cols, (float)r / m_Rows);
+					//TODO: Add color
+				}
+			}
+			m_VBO->Bind();
+			m_VBO->SetData((m_Rows * m_Cols) * sizeof(MeshVertex), m_aoVerts);
+			m_VBO->layout.Push<glm::vec4>("Position", 1, false);
+			m_VBO->layout.Push<glm::vec2>("TexCoord", 1, false);
+			m_VertexArray.PushBuffer(m_VBO);
+			//
+			// Generate Indicies
+			//
+			m_IBO = new API::Buffer(GL_ELEMENT_ARRAY_BUFFER, GL_STATIC_DRAW);
+			m_auIndicies = new uint[(dims - 1) * (dims - 1) * 6];
+			uint index = 0;
+			for (uint r = 0; r < (dims - 1); ++r)
+			{
+				for (uint c = 0; c < (dims - 1); ++c)
+				{
+					//tri 1
+					m_auIndicies[index++] = r * dims + c;
+					m_auIndicies[index++] = (r + 1) * dims + c;
+					m_auIndicies[index++] = (r + 1) * dims + (c + 1);
+			
+					m_auIndicies[index++] = r * dims + c;
+					m_auIndicies[index++] = (r + 1) * dims + (c + 1);
+					m_auIndicies[index++] = r * dims + (c + 1);
+				}
+			}
+			m_IBO->Bind();
+			m_IBO->SetData((dims - 1) * (dims - 1) * 6 * sizeof(uint), m_auIndicies);
+			m_VertexArray.PushBuffer(m_IBO);
+			m_VertexArray.Unbind();
 			//
 			// Generate Perlin Noise
 			//
@@ -99,40 +142,20 @@ namespace LivingEnd {
 					}
 				}
 			}
-			m_VBO->Bind();
-			m_VBO->SetData((dims * dims) * sizeof(float), m_PerlinData);
-			m_VBO->layout.Push<glm::vec4>("Position", 1, false);
-			//TODO: Push color
-			m_VertexArray.PushBuffer(m_VBO);
-			//
-			// Generate Indicies
-			//
-			m_IBO = new API::Buffer(GL_ELEMENT_ARRAY_BUFFER, GL_STATIC_DRAW);
-			m_auIndicies = new uint[(dims - 1) * (dims - 1) * 6];
-			uint index = 0;
-			for (uint r = 0; r < (dims - 1); ++r)
-			{
-				for (uint c = 0; c < (dims - 1); ++c)
-				{
-					//tri 1
-					m_auIndicies[index++] = r * dims + c;
-					m_auIndicies[index++] = (r + 1) * dims + c;
-					m_auIndicies[index++] = (r + 1) * dims + (c + 1);
-
-					m_auIndicies[index++] = r * dims + c;
-					m_auIndicies[index++] = (r + 1) * dims + (c + 1);
-					m_auIndicies[index++] = r * dims + (c + 1);
-				}
-			}
-			m_IBO->Bind();
-			m_IBO->SetData((dims - 1) * (dims - 1) * 6 * sizeof(uint), m_auIndicies);
-			m_VertexArray.PushBuffer(m_IBO);
-			m_VertexArray.Unbind();
 
 			if (m_Texture == nullptr)
 			{
 				m_Texture = new Texture();
-				m_Texture->GeneratePerlinTexture(64, 64, GL_RED, m_PerlinData);
+				m_Texture->GeneratePerlinTexture(m_Rows, m_Cols, GL_RED, m_PerlinData);
+			}
+			else
+			{
+				m_Texture->GeneratePerlinTexture(m_Rows, m_Cols, GL_RED, m_PerlinData);
+			}
+
+			if (m_Shader == nullptr)
+			{
+				m_Shader = m_Texture->GetShader();
 			}
 		}
 	}

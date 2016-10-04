@@ -20,7 +20,7 @@ namespace LivingEnd
 		{
 			glm::vec4 Position;
 			//glm::vec3 normal;
-			//glm::vec2 uv;
+			glm::vec2 uv;
 		};
 		class Mesh : public IRenderable
 		{

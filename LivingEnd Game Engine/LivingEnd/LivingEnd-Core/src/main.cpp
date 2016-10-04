@@ -19,7 +19,7 @@ int main()
 	//
 	// Setup Camera
 	//
-	FlyCamera camera;
+	FlyCamera camera(10.0f, 0.5f);
 	camera.SetInputWindow(window.getWindow());
 	camera.LookAt(glm::vec3(10), glm::vec3(0), glm::vec3(0, 1, 0));
 	camera.SetupPerspective(glm::pi<float>() * 0.25f, (float)window.getWidth() / (float)window.getHeight(), 0.1f, 1000.f);
@@ -34,10 +34,9 @@ int main()
 	//
 	// Create models
 	//
-	//Grid grid(20, 20);
-	//grid.GenerateGrid();
 	//perlin data
 	Grid perlinGrid(64, 64);
+	//perlinGrid.GenerateGrid();
 	perlinGrid.GeneratePerlin();
 
 	FBXModel model("data/FBXModels/soulspear.fbx");
@@ -53,17 +52,16 @@ int main()
 	while (!window.closed())
 	{
 		window.clear();
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		//calculate dt
 		oldtime = newtime;
 		newtime = glfwGetTime();
 		DeltaTime = (newtime - oldtime);
 		camera.Update(DeltaTime);
 		perlinGrid.Render(camera);
-		//grid.Render(camera);
 
-		model.Render(&camera);
-window.update();
+		//model.Render(&camera);
+		window.update();
 	}
 	system("pause");
 	return 0;

@@ -28,7 +28,7 @@ namespace LivingEnd { namespace Graphics {
 	void FBXModel::Render(FlyCamera* a_pCamera)
 	{
 		m_Shader->enable();
-		m_Shader->setUnifromMat4("ProjectionView_matrix", a_pCamera->GetProjectionView());
+		m_Shader->setUnifromMat4("ProjectionView", a_pCamera->GetProjectionView());
 		for (uint i = 0; i < m_FBX->getMeshCount(); ++i)
 		{
 			FBXMeshNode* mesh = m_FBX->getMeshByIndex(i);

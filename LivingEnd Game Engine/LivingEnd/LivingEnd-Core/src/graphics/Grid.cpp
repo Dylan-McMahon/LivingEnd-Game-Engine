@@ -69,7 +69,7 @@ namespace LivingEnd {
 
 		void Grid::GeneratePerlin()
 		{
-			//m_Shader = new Shader("../data/Shaders/BasicVertexShader.vs", "../data/Shaders/BasicFragmentShader.fs");
+			m_Shader = new Shader("data/Shaders/BasicVertexShader.vs", "data/Shaders/BasicFragmentShader.fs");
 			//m_Shader->setUnifromMat4("ProjectionView_matrix", projection_View);
 			m_VertexArray.Bind();
 			uint dims = m_Rows;
@@ -134,6 +134,7 @@ namespace LivingEnd {
 				m_Texture = new Texture();
 				m_Texture->GeneratePerlinTexture(64, 64, GL_RED, m_PerlinData);
 			}
+			m_Shader = m_Texture->GetShader();
 		}
 	}
 }

@@ -12,6 +12,7 @@ namespace LivingEnd
 			m_ImageFormat = 0;
 			m_ImageData = nullptr;
 			m_Shader = nullptr;
+			m_TextureSlot = GL_TEXTURE0;
 
 		}
 		Texture::~Texture()
@@ -41,7 +42,7 @@ namespace LivingEnd
 				stbi_image_free(m_ImageData);
 				if (m_Shader == nullptr)
 				{
-					m_Shader = new Shader("../data/Shaders/TextureVertexShader.vs", "../data/Shaders/TextureFragmentShader.fs");
+					m_Shader = new Shader("data/Shaders/TextureVertexShader.vs", "data/Shaders/TextureFragmentShader.fs");
 				}
 			}
 		}
@@ -58,14 +59,13 @@ namespace LivingEnd
 				API::SetTextureParameter(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 				if (m_Shader == nullptr)
 				{
-					m_Shader = new Shader("../data/Shaders/TerrainVertexShader.vs", "../data/Shaders/TerrainFragmentShader.fs");
+					m_Shader = new Shader("data/Shaders/TerrainVertexShader.vs", "data/Shaders/TerrainFragmentShader.fs");
 				}
+				API::SetActiveTexture(m_TextureSlot);
+				API::BindTexture(GL_TEXTURE_2D, m_Texture);
 				m_Shader->enable();
 				m_Shader->setUnifrom1i("perlin_texture", m_Texture);
 				m_Shader->disable();
-				GLenum error = glGetError();
-				if (error != GL_NO_ERROR)
-					std::cout << "OpenGL error: " << error << std::endl;
 			}
 		}
 	}

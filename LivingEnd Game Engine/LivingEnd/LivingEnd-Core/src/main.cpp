@@ -48,6 +48,9 @@ int main()
 	float newtime = 0.f;
 	//TODO: put this somehwere
 	float DeltaTime = 0.f;
+	GLenum error = glGetError();
+	if (error != GL_NO_ERROR)
+		std::cout << "OpenGL error: " << error << std::endl;
 
 	//Game loop
 	while (!window.closed())
@@ -59,11 +62,17 @@ int main()
 		newtime = glfwGetTime();
 		DeltaTime = (newtime - oldtime);
 		camera.Update(DeltaTime);
+		if (error != GL_NO_ERROR)
+			std::cout << "OpenGL error: " << error << std::endl;
 		perlinGrid.Render(camera);
+		if (error != GL_NO_ERROR)
+			std::cout << "OpenGL error: " << error << std::endl;
 		//grid.Render(camera);
 
 		model.Render(&camera);
-window.update();
+		if (error != GL_NO_ERROR)
+			std::cout << "OpenGL error: " << error << std::endl;
+		window.update();
 	}
 	system("pause");
 	return 0;

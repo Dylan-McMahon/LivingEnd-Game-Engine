@@ -25,6 +25,7 @@ namespace LivingEnd {
 			int m_ImageHeight;
 			int m_ImageFormat;
 			uint m_Texture;
+			GLenum m_TextureSlot;
 			byte* m_ImageData;
 			Shader* m_Shader;
 			int m_TextureSlot;

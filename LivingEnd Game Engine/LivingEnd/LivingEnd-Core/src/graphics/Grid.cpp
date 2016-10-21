@@ -1,4 +1,5 @@
 #include "Grid.h"
+#include "glm\glm\ext.hpp"
 
 namespace LivingEnd {
 	namespace Graphics {
@@ -8,6 +9,7 @@ namespace LivingEnd {
 		{
 			m_Rows = rows;
 			m_Cols = cols;
+			m_SeaLevel = 2.5f;
 
 			m_PerlinData = nullptr;
 		}
@@ -146,13 +148,12 @@ namespace LivingEnd {
 			if (m_Texture == nullptr)
 			{
 				m_Texture = new Texture();
-				m_Texture->GeneratePerlinTexture(m_Rows, m_Cols, GL_RED, m_PerlinData);
+				m_Texture->GeneratePerlinTexture(m_Rows, m_Cols, GL_RED, m_PerlinData, m_SeaLevel);
 			}
 			else
 			{
-				m_Texture->GeneratePerlinTexture(m_Rows, m_Cols, GL_RED, m_PerlinData);
+				m_Texture->GeneratePerlinTexture(m_Rows, m_Cols, GL_RED, m_PerlinData, m_SeaLevel);
 			}
-
 			if (m_Shader == nullptr)
 			{
 				m_Shader = m_Texture->GetShader();

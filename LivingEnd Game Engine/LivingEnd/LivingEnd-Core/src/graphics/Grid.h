@@ -24,11 +24,14 @@ namespace LivingEnd
 
 			uint m_Rows;
 			uint m_Cols;
+			float m_SeaLevel;
 			VertexArray m_VertexArray;
 			API::Buffer* m_VBO;
 			API::Buffer* m_IBO;
 			MeshVertex* m_aoVerts;
 			uint* m_auIndicies;
+
+			
 
 		};
 	}

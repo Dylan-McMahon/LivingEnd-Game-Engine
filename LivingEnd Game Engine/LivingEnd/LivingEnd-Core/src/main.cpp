@@ -58,9 +58,9 @@ int main()
 		newtime = glfwGetTime();
 		DeltaTime = (newtime - oldtime);
 		camera.Update(DeltaTime);
-		perlinGrid.Render(camera);
+		//perlinGrid.Render(camera);
 
-		//model.Render(&camera);
+		model.Render(&camera);
 		window.update();
 	}
 	system("pause");

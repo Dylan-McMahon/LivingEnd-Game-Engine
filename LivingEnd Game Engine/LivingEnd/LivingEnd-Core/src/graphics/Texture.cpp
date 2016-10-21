@@ -48,7 +48,7 @@ namespace LivingEnd
 				API::SetActiveTexture(m_TextureSlot);
 			}
 		}
-		void Texture::GeneratePerlinTexture(int width, int height, int format, float* data)
+		void Texture::GeneratePerlinTexture(int width, int height, int format, float* data, float sealevel)
 		{
 			if (m_ImageData == nullptr)
 			{
@@ -68,6 +68,7 @@ namespace LivingEnd
 				API::SetTextureParameter(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 
 				m_Shader->setUnifrom1i("perlin_texture", m_TextureSlot);
+				m_Shader->setUnifrom1f("SeaLevel", sealevel);
 				m_Shader->disable();
 				////GLenum error = glGetError();
 				//if (error != GL_NO_ERROR)

@@ -7,6 +7,8 @@
 #include <glm\glm\mat4x4.hpp>
 //std strings
 #include <iostream>
+//GUI
+#include "imgui\imgui_impl_glfw_gl3.h"
 namespace LivingEnd { namespace Graphics { 
 
 #define MAX_KEYS 1024

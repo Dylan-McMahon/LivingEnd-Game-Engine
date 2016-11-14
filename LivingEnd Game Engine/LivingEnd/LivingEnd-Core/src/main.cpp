@@ -8,6 +8,8 @@
 
 #include "graphics\Texture.h"
 
+#include "imgui\imgui.h"
+#include"imgui\imgui_impl_glfw_gl3.h"
 int main()
 {
 	using namespace LivingEnd;
@@ -16,6 +18,13 @@ int main()
 	//Create window
 	Window window(960, 540, "LivingEnd Test Screen");
 	glClearColor(0.28f, 0.28f, 0.28f, 1.0f);
+
+	//Create GUI
+	ImGui_ImplGlfwGL3_Init(window.getWindow(), true);
+	ImGuiIO& io = ImGui::GetIO();
+	io.DisplaySize.x = window.getWidth();
+	io.DisplaySize.y = window.getHeight();
+
 	//
 	// Setup Camera
 	//
@@ -38,8 +47,8 @@ int main()
 	Grid perlinGrid(64, 64);
 	//perlinGrid.GenerateGrid();
 	perlinGrid.GeneratePerlin();
-
 	FBXModel model("data/FBXModels/soulspear.fbx");
+	//model.LoadTextureFromFile("data/FBXModels/soulspear_diffuse.tga");
 	model.LoadTextureFromFBX(0);
 	//
 	// Create DeltaTime
@@ -50,6 +59,13 @@ int main()
 	float DeltaTime = 0.f;
 
 	//Game loop
+	//if false render generation
+	enum SceneSelect
+	{
+		Terrain,
+		Model
+	};
+	bool RenderMode = true;
 	while (!window.closed())
 	{
 		window.clear();
@@ -59,11 +75,31 @@ int main()
 		newtime = glfwGetTime();
 		DeltaTime = (newtime - oldtime);
 		camera.Update(DeltaTime);
-		//perlinGrid.Render(camera);
 
-		model.Render(&camera);
+		/*switch (RenderMode)
+		{
+		case Terrain:
+			perlinGrid.Render(camera);
+			break;
+		case Model:
+			model.Render(&camera);
+			break;
+		default:
+			break;
+		}*/
+		if (RenderMode == true)
+		{
+			perlinGrid.Render(camera);
+		}
+		else
+		{
+			model.Render(&camera);
+		}
+
+		ImGui::Render();
+		ImGui::Checkbox("Display Terrain", &RenderMode);
 		window.update();
 	}
-	system("pause");
+	ImGui_ImplGlfwGL3_Shutdown();
 	return 0;
 }

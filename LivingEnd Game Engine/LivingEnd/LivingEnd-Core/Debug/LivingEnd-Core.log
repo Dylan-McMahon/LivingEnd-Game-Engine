@@ -1,4 +1,16 @@
-﻿  FBXModel.cpp
+﻿  main.cpp
 c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\dep\fbxloader\fbxfile.h(3): warning C4005: 'GLM_FORCE_PURE': macro redefinition
   c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\dep\fbxloader\fbxfile.h(3): note: command-line arguments:  see previous definition of 'GLM_FORCE_PURE'
-  LivingEnd-Core.vcxproj -> C:\Users\dylan.mcmahon\Documents\LivingEnd-Game-Engine\LivingEnd Game Engine\LivingEnd\Debug\LivingEnd-Core.exe
+c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\src\main.cpp(25): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\src\main.cpp(26): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\src\main.cpp(75): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  window.cpp
+  Generating Code...
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
+main.obj : error LNK2019: unresolved external symbol "struct ImGuiIO & __cdecl ImGui::GetIO(void)" (?GetIO@ImGui@@YAAAUImGuiIO@@XZ) referenced in function _main
+main.obj : error LNK2019: unresolved external symbol "void __cdecl ImGui::Render(void)" (?Render@ImGui@@YAXXZ) referenced in function _main
+main.obj : error LNK2019: unresolved external symbol "bool __cdecl ImGui::Checkbox(char const *,bool *)" (?Checkbox@ImGui@@YA_NPBDPA_N@Z) referenced in function _main
+main.obj : error LNK2019: unresolved external symbol "bool __cdecl ImGui_ImplGlfwGL3_Init(struct GLFWwindow *,bool)" (?ImGui_ImplGlfwGL3_Init@@YA_NPAUGLFWwindow@@_N@Z) referenced in function _main
+main.obj : error LNK2019: unresolved external symbol "void __cdecl ImGui_ImplGlfwGL3_Shutdown(void)" (?ImGui_ImplGlfwGL3_Shutdown@@YAXXZ) referenced in function _main
+window.obj : error LNK2019: unresolved external symbol "void __cdecl ImGui_ImplGlfwGL3_NewFrame(void)" (?ImGui_ImplGlfwGL3_NewFrame@@YAXXZ) referenced in function "public: void __thiscall LivingEnd::Graphics::Window::clear(void)const " (?clear@Window@Graphics@LivingEnd@@QBEXXZ)
+C:\Users\dylan.mcmahon\Documents\LivingEnd-Game-Engine\LivingEnd Game Engine\LivingEnd\Debug\LivingEnd-Core.exe : fatal error LNK1120: 6 unresolved externals

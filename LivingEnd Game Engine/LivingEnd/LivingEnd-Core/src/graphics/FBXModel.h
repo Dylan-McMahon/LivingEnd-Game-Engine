@@ -17,6 +17,7 @@ namespace LivingEnd { namespace Graphics {
 		~FBXModel();
 		void Init(const char* path);
 		void Render(FlyCamera* a_pCamera);
+		void LoadTextureFromFile(char* filePath);
 		void LoadTextureFromFBX(int index);
 	private:
 		uint* m_GLData;

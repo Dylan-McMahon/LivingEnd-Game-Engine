@@ -40,14 +40,18 @@ namespace LivingEnd
 				m_Shader->enable();
 				m_ImageData = stbi_load(filePath, &m_ImageWidth, &m_ImageHeight, &m_ImageFormat, STBI_default);
 				m_Texture = API::CreateTexture();
+				GLenum error = glGetError();
 				API::SetActiveTexture(GL_TEXTURE0 + m_TextureSlot);
 				API::BindTexture(GL_TEXTURE_2D, m_Texture);
-				API::SetTextureData(GL_TEXTURE_2D, GL_RGB, m_ImageWidth, m_ImageHeight, m_ImageFormat, GL_UNSIGNED_BYTE, m_ImageData);
+				API::SetTextureData(GL_TEXTURE_2D, GL_RGB, m_ImageWidth, m_ImageHeight, GL_RGB, GL_UNSIGNED_BYTE, m_ImageData);
 				API::SetTextureParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 				API::SetTextureParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 				stbi_image_free(m_ImageData);
 
+				std::cout << std::to_string(m_Texture) << std::endl;
+
 				m_Shader->setUnifrom1i("diffuse", m_TextureSlot);
+
 				m_Shader->disable();
 			}
 		}
@@ -63,10 +67,12 @@ namespace LivingEnd
 				m_Shader->enable();
 				int temp =fbxFile->getTextureCount();
 				m_ImageData = fbxFile->getTextureByIndex(index)->data;
+				m_ImageWidth = fbxFile->getTextureByIndex(index)->width;
+				m_ImageHeight = fbxFile->getTextureByIndex(index)->height;
 				m_Texture = API::CreateTexture();
 				API::SetActiveTexture(GL_TEXTURE0 + m_TextureSlot);
 				API::BindTexture(GL_TEXTURE_2D, m_Texture);
-				API::SetTextureData(GL_TEXTURE_2D, GL_RGB, m_ImageWidth, m_ImageHeight, m_ImageFormat, GL_UNSIGNED_BYTE, m_ImageData);
+				API::SetTextureData(GL_TEXTURE_2D, GL_RGB, m_ImageWidth, m_ImageHeight, GL_RGB, GL_UNSIGNED_BYTE, m_ImageData);
 				API::SetTextureParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 				API::SetTextureParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 

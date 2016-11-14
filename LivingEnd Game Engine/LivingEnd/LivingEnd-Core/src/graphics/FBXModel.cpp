@@ -1,4 +1,5 @@
 #include "FBXModel.h"
+#include <iostream>
 
 namespace LivingEnd { namespace Graphics {
 
@@ -30,6 +31,7 @@ namespace LivingEnd { namespace Graphics {
 	void FBXModel::Render(FlyCamera* a_pCamera)
 	{
 		m_Shader->enable();
+		
 		m_Shader->setUnifromMat4("ProjectionView", a_pCamera->GetProjectionView());
 		if (m_Texture != nullptr)
 		{
@@ -45,6 +47,14 @@ namespace LivingEnd { namespace Graphics {
 			glDrawElements(GL_TRIANGLES, (uint)mesh->m_indices.size(), GL_UNSIGNED_INT, 0);
 		}
 		m_Shader->disable();
+	}
+
+	void FBXModel::LoadTextureFromFile(char* filePath)
+	{
+		m_Texture = new Texture;
+		m_Texture->LoadTexture(filePath);
+		
+		m_Shader = m_Texture->GetShader();
 	}
 
 	void FBXModel::LoadTextureFromFBX(int index)

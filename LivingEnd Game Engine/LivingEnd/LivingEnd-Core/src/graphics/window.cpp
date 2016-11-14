@@ -80,14 +80,15 @@ namespace LivingEnd {
 		void Window::clear() const
 		{
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+			ImGui_ImplGlfwGL3_NewFrame();
 		}
 		void Window::update()
 		{
 			glfwGetFramebufferSize(m_Window, &m_Width, &m_Height);
 			glViewport(0, 0, m_Width, m_Height); 
-			/*GLenum error = glGetError();
+			GLenum error = glGetError();
 			if (error != GL_NO_ERROR)
-				std::cout << "OpenGL error: " << error << std::endl;*/
+				std::cout << "OpenGL error: " << error << std::endl;
 			glfwSwapBuffers(m_Window);
 			glfwPollEvents();
 		}

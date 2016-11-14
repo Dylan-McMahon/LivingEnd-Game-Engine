@@ -40,6 +40,7 @@ int main()
 	perlinGrid.GeneratePerlin();
 
 	FBXModel model("data/FBXModels/soulspear.fbx");
+	model.LoadTextureFromFBX(0);
 	//
 	// Create DeltaTime
 	// TODO: Put this somewhere

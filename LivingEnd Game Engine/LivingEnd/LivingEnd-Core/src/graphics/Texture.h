@@ -4,6 +4,7 @@
 #include "Buffers\OpenGLRenderAPI.h"
 #include "shader.h"
 #include "Camera\FlyCamera.h"
+#include "FBXModel.h"
 namespace LivingEnd {
 	namespace Graphics
 	{
@@ -15,6 +16,7 @@ namespace LivingEnd {
 			void Bind();
 			void UnBind();
 			void LoadTexture(char* filePath);
+			void LoadFromFBX(FBXFile* fbxFile, int index);
 			void GeneratePerlinTexture(int width, int height, int format, float* data, float sealevel);
 
 			inline Shader* GetShader()const { return m_Shader; };
@@ -28,7 +30,7 @@ namespace LivingEnd {
 			GLenum m_TextureSlot;
 			byte* m_ImageData;
 			Shader* m_Shader;
-			int m_TextureSlot;
+			//int m_TextureSlot;
 		};
 	}
 }

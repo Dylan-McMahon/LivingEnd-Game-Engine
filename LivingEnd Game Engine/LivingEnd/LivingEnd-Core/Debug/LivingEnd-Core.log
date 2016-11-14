@@ -1,5 +1,4 @@
-﻿  main.cpp
+﻿  FBXModel.cpp
 c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\dep\fbxloader\fbxfile.h(3): warning C4005: 'GLM_FORCE_PURE': macro redefinition
   c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\dep\fbxloader\fbxfile.h(3): note: command-line arguments:  see previous definition of 'GLM_FORCE_PURE'
-c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\src\main.cpp(58): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   LivingEnd-Core.vcxproj -> C:\Users\dylan.mcmahon\Documents\LivingEnd-Game-Engine\LivingEnd Game Engine\LivingEnd\Debug\LivingEnd-Core.exe

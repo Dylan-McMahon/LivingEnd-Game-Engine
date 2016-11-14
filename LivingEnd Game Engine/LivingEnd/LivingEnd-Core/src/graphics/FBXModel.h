@@ -5,7 +5,10 @@
 #include "shader.h"
 #include "Buffers\OpenGLBuffer.h"
 #include "Camera\FlyCamera.h"
+#include "Texture.h"
 namespace LivingEnd { namespace Graphics {
+
+	class Texture;
 
 	class FBXModel /*: public IRenderable*/
 	{
@@ -14,10 +17,12 @@ namespace LivingEnd { namespace Graphics {
 		~FBXModel();
 		void Init(const char* path);
 		void Render(FlyCamera* a_pCamera);
+		void LoadTextureFromFBX(int index);
 	private:
 		uint* m_GLData;
 		Shader* m_Shader;
 		FBXFile* m_FBX;
+		Texture * m_Texture;
 	};
 }
 }

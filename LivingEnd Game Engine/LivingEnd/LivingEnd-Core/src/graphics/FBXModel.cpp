@@ -9,6 +9,7 @@ namespace LivingEnd { namespace Graphics {
 	{
 		Init(model_path);
 		m_Shader = new Shader("data/Shaders/FBXVertexShader.vs", "data/Shaders/FBXFragmentShader.fs");
+		m_Texture = nullptr;
 	}
 
 
@@ -16,6 +17,7 @@ namespace LivingEnd { namespace Graphics {
 	{
 		cleanup_OpenGl_Buffers(m_FBX);
 		delete m_FBX;
+		delete m_Texture;
 	}
 
 	void FBXModel::Init(const char* path)
@@ -29,6 +31,12 @@ namespace LivingEnd { namespace Graphics {
 	{
 		m_Shader->enable();
 		m_Shader->setUnifromMat4("ProjectionView", a_pCamera->GetProjectionView());
+		if (m_Texture != nullptr)
+		{
+			//m_Texture->GetShader()->enable();
+			//m_Texture->GetShader()->setUnifromMat4("ProjectionView_matrix", a_pCamera->GetProjectionView());
+			//m_Texture->GetShader()->disable();
+		}
 		for (uint i = 0; i < m_FBX->getMeshCount(); ++i)
 		{
 			FBXMeshNode* mesh = m_FBX->getMeshByIndex(i);
@@ -37,6 +45,15 @@ namespace LivingEnd { namespace Graphics {
 			glDrawElements(GL_TRIANGLES, (uint)mesh->m_indices.size(), GL_UNSIGNED_INT, 0);
 		}
 		m_Shader->disable();
+	}
+
+	void FBXModel::LoadTextureFromFBX(int index)
+	{
+		m_Texture = new Texture;
+		m_FBX->initialiseOpenGLTextures();
+		m_FBX->getTextureByIndex(0);
+		m_Texture->LoadFromFBX(m_FBX, index);
+		m_Shader = m_Texture->GetShader();
 	}
 
 	void create_OpenGL_Buffers(FBXFile* fbx)

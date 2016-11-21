@@ -25,6 +25,13 @@ int main()
 	io.DisplaySize.x = window.getWidth();
 	io.DisplaySize.y = window.getHeight();
 
+	enum SceneSelect
+	{
+		Terrain,
+		Model
+	};
+	bool RenderMode = false;
+	
 	//
 	// Setup Camera
 	//
@@ -60,15 +67,12 @@ int main()
 
 	//Game loop
 	//if false render generation
-	enum SceneSelect
-	{
-		Terrain,
-		Model
-	};
-	bool RenderMode = true;
+	glm::vec3 m_ClearColor(0.28f);
 	while (!window.closed())
 	{
 		window.clear();
+		glClearColor(m_ClearColor.r, m_ClearColor.g, m_ClearColor.b, 1.0f);
+		ImGui_ImplGlfwGL3_NewFrame();
 		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		//calculate dt
 		oldtime = newtime;
@@ -95,9 +99,10 @@ int main()
 		{
 			model.Render(&camera);
 		}
-
-		ImGui::Render();
+		//ImGui::ColorEdit3("Clear Color", glm::value_ptr(m_ClearColor));
 		ImGui::Checkbox("Display Terrain", &RenderMode);
+		
+		ImGui::Render();
 		window.update();
 	}
 	ImGui_ImplGlfwGL3_Shutdown();

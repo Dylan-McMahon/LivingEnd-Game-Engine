@@ -61,7 +61,7 @@ namespace LivingEnd { namespace Graphics {
 	{
 		m_Texture = new Texture;
 		m_FBX->initialiseOpenGLTextures();
-		m_FBX->getTextureByIndex(0);
+		m_FBX->getTextureByIndex(index);
 		m_Texture->LoadFromFBX(m_FBX, index);
 		m_Shader = m_Texture->GetShader();
 	}

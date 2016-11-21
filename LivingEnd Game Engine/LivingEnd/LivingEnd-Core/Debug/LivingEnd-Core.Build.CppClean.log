@@ -1,6 +1,9 @@
 c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\debug\vc140.pdb
 c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\debug\vc140.idb
 c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\debug\gl_core_4_4.obj
+c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\debug\imgui.obj
+c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\debug\imgui_demo.obj
+c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\debug\imgui_draw.obj
 c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\debug\bufferlayout.obj
 c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\debug\openglbuffer.obj
 c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\debug\basecamera.obj
@@ -10,10 +13,12 @@ c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\liv
 c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\debug\mesh.obj
 c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\debug\shader.obj
 c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\debug\vertexbuffer.obj
+c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\debug\grid.obj
 c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\debug\texture.obj
 c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\debug\main.obj
 c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\debug\window.obj
 c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\debug\vertexarray.obj
+c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\debug\livingend-core.pdb
 c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\debug\livingend-core.tlog\cl.command.1.tlog
 c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\debug\livingend-core.tlog\cl.read.1.tlog
 c:\users\dylan.mcmahon\documents\livingend-game-engine\livingend game engine\livingend\livingend-core\debug\livingend-core.tlog\cl.write.1.tlog
